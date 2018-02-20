@@ -1,0 +1,19 @@
+<?xml version="1.0" ?>
+
+<robot name="Roberta_P80_800" xmlns:xacro="http://ros.org/wiki/xacro">
+	<xacro:include filename="$(find gomtec_robot_description)/urdf/P80_800_macro.xacro"/>
+	<xacro:P80_800 prefix=""/>
+
+	<xacro:include filename="$(find gomtec_robot_description)/urdf/RoboCommander_macro.xacro"/>
+	<xacro:RoboCommander prefix="" flange_link="link_flange"/>
+
+	<xacro:include filename="$(find gomtec_robot_description)/urdf/Gripper_macro.xacro"/>
+	<xacro:Gripper prefix="" flange_link="link_RoboCommander"/>
+
+        <xacro:include filename="$(find gomtec_robot_description)/urdf/Camera.xacro"/>
+	<xacro:camera_link prefix="" flange_link="link_RoboCommander"/>
+
+	<!--include filename="$(find gomtec_robot_description)/urdf/CameraGripper_macro.xacro"/>
+	<xacro:CameraGripper prefix="" flange_link="link_RoboCommander"/-->
+
+</robot>

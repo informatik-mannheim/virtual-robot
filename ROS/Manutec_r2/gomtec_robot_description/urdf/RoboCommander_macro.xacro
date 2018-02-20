@@ -1,0 +1,43 @@
+<?xml version="1.0" ?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+    <xacro:property name="pi" value="3.14159265358979" />
+	<xacro:macro name="RoboCommander" params="prefix flange_link">
+
+		<!-- link list -->
+        <link name="${prefix}link_RoboCommander">
+            <visual>
+                <origin xyz="0 0 -0.065" rpy="${pi} 0 0"/>
+                <geometry>
+                    <mesh 
+                        filename="package://gomtec_robot_description/meshes/visual/RGM1720_RoboCommander.STL" 
+                        scale="0.001 0.001 0.001"/>
+                </geometry>
+                <material name="gomtec_burnt_orange">
+                    <color rgba="1 0.55 0 1"/>
+                </material>
+            </visual>
+            <collision>
+                <origin xyz="0 0 -0.065" rpy="${pi} 0 0"/>
+                <geometry>
+                    <mesh 
+                        filename="package://gomtec_robot_description/meshes/collision/RGM1720_RoboCommander.STL" 
+                        scale="0.001 0.001 0.001"/>
+                </geometry>
+            </collision>
+        </link>
+		<!-- end of link list -->
+
+		<!-- joint list -->
+        <joint name="${prefix}joint_RoboCommander_fixed" type="fixed">
+            <parent link="${prefix}${flange_link}" />
+            <child link="${prefix}link_RoboCommander" />
+            <origin xyz="0 0 0.065" rpy="0 0 0" />
+        </joint>
+		<!-- end of joint list -->
+
+        <gazebo reference="link_RoboCommander">
+            <material>Gazebo/Green</material>
+        </gazebo>
+	</xacro:macro>
+</robot>
+

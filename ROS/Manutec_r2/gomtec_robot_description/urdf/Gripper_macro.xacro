@@ -1,0 +1,119 @@
+<?xml version="1.0" ?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+    <xacro:property name="pi" value="3.14159265358979" />
+	<xacro:macro name="Gripper" params="prefix flange_link">
+
+		<!-- link list -->
+        <link name="${prefix}link_Gripper">
+            <visual>
+                <origin xyz="0 0 0.0315" rpy="${pi/2} 0 0" />
+                <geometry>
+                    <mesh 
+                        filename="package://gomtec_robot_description/meshes/visual/RGM1680_Gripper.STL" 
+                        scale="0.001 0.001 0.001" />
+                </geometry>
+                <material name="gomtec_black">
+                    <color rgba="0.15 0.15 0.15 1" />
+                </material>
+            </visual>
+            <collision>
+                <origin xyz="0 0 0.0315" rpy="${pi/2} 0 0" />
+                <geometry>
+                    <mesh 
+                        filename="package://gomtec_robot_description/meshes/collision/RGM1680_Gripper.STL" 
+                        scale="0.001 0.001 0.001" />
+                </geometry>
+            </collision>
+        </link>
+
+        <link name="${prefix}link_Finger1">
+            <visual>
+                <origin xyz="-0.00323 0 0" rpy="${pi/2} 0 ${-pi}" />
+                <geometry>
+                    <mesh 
+                        filename="package://gomtec_robot_description/meshes/visual/RGM1690_Finger.STL" 
+                        scale="0.001 0.001 0.001" />
+                </geometry>
+                <material name="gomtec_black">
+                    <color rgba="0.15 0.15 0.15 1" />
+                </material>
+            </visual>
+            <collision>
+                <origin xyz="-0.00323 0 0" rpy="${pi/2} 0 ${-pi}" />
+                <geometry>
+                    <mesh 
+                        filename="package://gomtec_robot_description/meshes/collision/RGM1690_Finger.STL" 
+                        scale="0.001 0.001 0.001" />
+                </geometry>
+            </collision>
+        </link>
+
+        <link name="${prefix}link_Finger2">
+            <visual>
+                <origin xyz="0.00323 0 0" rpy="${pi/2} 0 0" />
+                <geometry>
+                    <mesh 
+                        filename="package://gomtec_robot_description/meshes/visual/RGM1690_Finger.STL" 
+                        scale="0.001 0.001 0.001" />
+                </geometry>
+                <material name="gomtec_black">
+                    <color rgba="0.15 0.15 0.15 1" />
+                </material>
+            </visual>
+            <collision>
+                <origin xyz="0.00323 0 0" rpy="${pi/2} 0 0" />
+                <geometry>
+                    <mesh 
+                        filename="package://gomtec_robot_description/meshes/collision/RGM1690_Finger.STL" 
+                        scale="0.001 0.001 0.001" />
+                </geometry>
+            </collision>
+        </link>
+
+        <link name="${prefix}link_TCP" />
+		<!-- end of link list -->
+
+		<!-- joint list -->
+        <joint name="${prefix}joint_GripperBase" type="fixed">
+            <parent link="${prefix}${flange_link}" />
+            <child link="${prefix}link_Gripper" />
+            <origin xyz="0 0 0" rpy="0 0 0" />
+        </joint>
+
+        <joint name="${prefix}joint_f1_linear" type="prismatic">
+            <parent link="${prefix}link_Gripper" />
+            <child link="${prefix}link_Finger1" />
+            <origin xyz="0 0 0.141" rpy="0 0 0" />
+            <axis xyz="-1 0 0" />
+            <limit effort="0" lower="0" upper="0.035" velocity="0.05" />
+        </joint>
+
+        <joint name="${prefix}joint_f2_linear" type="prismatic">
+            <parent link="${prefix}link_Gripper" />
+            <child link="${prefix}link_Finger2" />
+            <origin xyz="0 0 0.141" rpy="0 0 0" />
+            <axis xyz="1 0 0" />
+            <limit effort="0" lower="0" upper="0.035" velocity="0.05" />
+            <mimic joint="${prefix}joint_f1_linear" />
+        </joint>
+
+        <joint name="${prefix}joint_tcp" type="fixed">
+            <parent link="${prefix}link_Gripper" />
+            <child link="${prefix}link_TCP" />
+            <origin xyz="0 0 0.141" rpy="0 0 0" />
+        </joint>
+		<!-- end of joint list -->
+
+        <gazebo reference="${prefix}link_Gripper">
+            <material>Gazebo/Green</material>
+        </gazebo>
+        <gazebo reference="${prefix}link_Finger1">
+            <material>Gazebo/Blue</material>
+        </gazebo>
+        <gazebo reference="${prefix}link_Finger2">
+            <material>Gazebo/Blue</material>
+        </gazebo>
+
+	</xacro:macro>
+</robot>
+

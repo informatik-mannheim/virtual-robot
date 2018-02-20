@@ -1,0 +1,25 @@
+/**
+\mainpage
+\htmlinclude manifest.html
+
+\b gomtec_robot_description 
+
+
+<!--
+some useful commands:
+
+(re-)generate urdf:
+ rosrun xacro xacro.py ./urdf/Roberta_P80_800.xacro > ./urdf/Roberta_P80_800.urdf
+
+create some documentation from urdf:
+ rosrun urdfdom urdf_to_graphiz ./urdf/Roberta_P80_800.urdf
+
+view and move robot model based on urdf:
+ roslaunch gomtec_robot_description display.launch model:=./urdf/Roberta_P80_800.urdf gui:=true
+
+connect to simple message robot state server:
+ roslaunch industrial_robot_client robot_state_visualize.launch robot_ip:=192.168.0.1 urdf_path:=./urdf/Roberta_P80_800.urdf
+
+-->
+
+*/
