@@ -1,0 +1,10 @@
+\section{Einleitung}
+
+\subsection{Ziel}
+Das Ziel des Projekts ist es die Bewegung des Manutec r2 mit dem Robot Operating System zu visualisieren. Dieser wird mit einer SPS-Software (CODESYS) gesteuert. CODESYS und ROS sollen über das TCP/IP-Protokoll miteinander kommunizieren. 
+
+\subsection{Problemstellung}
+Die Problematik liegt in der Kommunikation zwischen ROS und CODESYS, da ROS ausschließlich auf Linux und CODESYS ausschließlich auf Windows läuft. Beide Programme sollen auf dem selben Rechner laufen. Demnach muss eines der beiden Betriebssysteme ein Subsystem des jeweilig anderen Betriebssystems sein.
+
+\subsection{Problemlösung}
+Für die Lösung dieses Problems gibt es zwei Varianten. Die erste Variante basiert darauf, das Linux-Betriebssystem in einer virtuellen Maschine unter Windows zu betreiben. Die zweite Variante, die in diesem Projekt verwendet wird, verwendet ein Windows Subsystem für Linux. In der folgenden Dokumentation wird erklärt, wie man dieses Subsystem sowie ROS installiert.

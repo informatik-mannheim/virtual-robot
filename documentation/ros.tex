@@ -1,0 +1,94 @@
+\section{ROS}
+
+\subsection{Was ist ROS?}
+Das Robot Operating System oder kurz ROS, ist ein Meta-Betriebssystem welches sich über das eigentliche Betriebssystem legt. Das ROS bedient arbeitet, ähnlich wie das MQTT-Protokoll, mit dem Public/Subscribe-Prinzip. Es funktioniert ausschließlich auf Linux und versteht die Syntax von C++ und Phyton. 
+Der Vorteil des ROS ist, dass man eine Vielzahl an Packages hat, welche man ohne großen Aufwand in sein Projekt einbinden kann. Des Weiteren muss man über keinerlei Wissen über das Package verfügen um damit arbeiten zu können.
+
+\subsection{Installation von ROS}
+Die folgende Installationsanleitung von ROS bezieht sich auf ROS Kinetic und Xenial (Ubuntu 16.04).\\
+Zuerst muss man die ROS Pakete und Schlüssel hinzufügen:
+\begin{lstlisting}[language=bash]
+sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
+\end{lstlisting}
+
+\begin{lstlisting}[language=bash]
+sudo apt-key adv --keyserver hkp://ha.pool.sks-keyservers.net:80 --recv-key 421C365BD9FF1F717815A3895523BAEEB01FA116
+\end{lstlisting}
+Vor der Installation müssen alle Pakete auf dem aktuellsten Stand sein:
+\begin{lstlisting}[language=bash]
+sudo apt-get update
+\end{lstlisting}
+Jetzt kann mit der ROS Installation begonnen werden:
+\begin{lstlisting}[language=bash]
+sudo apt-get install ros-kinetic-desktop-full
+\end{lstlisting}
+Dieser Vorgang kann je nach verbauter Hardware etwas Zeit in Anspruch nehmen.\\
+Bevor man nun ROS starten kann, müssen noch einige Befehle ausgeführt werden:
+\begin{lstlisting}[language=bash]
+sudo rosdep init
+\end{lstlisting}
+
+\begin{lstlisting}[language=bash]
+rosdep update
+\end{lstlisting}
+
+\begin{lstlisting}[language=bash]
+echo "source /opt/ros/kinetic/setup.bash" >> ~/.bashrc
+\end{lstlisting}
+
+\begin{lstlisting}[language=bash]
+source ~/.bashrc
+\end{lstlisting}
+
+\begin{lstlisting}[language=bash]
+source /opt/ros/kinetic/setup.bash
+\end{lstlisting}
+
+\subsection{Einrichten des Workspaces}
+Damit man Nodes in ROS ausführen kann, muss zuerst das Arbeitsverzeichnis erstellt werden. Hierfür müssen folgende Befehler in der Linux-Console ausgeführt werden:
+\begin{lstlisting}[language=bash]
+mkdir -p ~/catkin_ws/src
+\end{lstlisting}
+
+\begin{lstlisting}[language=bash]
+cd ~/catkin_ws/src
+\end{lstlisting}
+
+\begin{lstlisting}[language=bash]
+catkin_init_workspace
+\end{lstlisting}
+
+\begin{lstlisting}[language=bash]
+cd ~/catkin_ws/
+\end{lstlisting}
+
+\begin{lstlisting}[language=bash]
+source devel/setup.bash
+\end{lstlisting}
+
+\begin{lstlisting}[language=bash]
+catkin_make
+\end{lstlisting}
+
+\subsection{Testen der Installation}
+Mit der Simulation TurtleSim kann man ganz einfach testen, ob die Installation geklappt hat. Mit folgenden Befehlen lässt sich die Simulation starten (jeder Befehl = neuer Tab!):
+
+\begin{lstlisting}[language=bash]
+roscore
+\end{lstlisting}
+
+\begin{lstlisting}[language=bash]
+rosmake turtlesim
+\end{lstlisting}
+
+\begin{lstlisting}[language=bash]
+rosrun turtlesim turtlesim_node
+\end{lstlisting}
+
+\begin{lstlisting}[language=bash]
+rosrun turtlesim turtle_teleop_key
+\end{lstlisting}
+
+Es kann passieren, dass der TurtleSim nicht auf die Tastertureingabe reagiert, dann muss das aktive Fenster der Node \textit{turtle\_teleop\_key} sein.
+
+

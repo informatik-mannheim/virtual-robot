@@ -1,0 +1,73 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[left=3cm,right=3cm,top=3cm,bottom=3cm,includeheadfoot]{geometry}
+\usepackage{ngerman}
+\usepackage{xcolor}
+\usepackage{float}
+\usepackage{listings}
+\lstset{
+  basicstyle=\ttfamily,
+  columns=fullflexible,
+  frame=single,
+  breaklines=true,
+  postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space},
+}
+\usepackage{natbib}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\lstset{basicstyle=\ttfamily,
+  showstringspaces=false,
+  %commentstyle=\color{red},
+  %keywordstyle=\color{blue}
+}
+
+%%% Kopf- und Fußzeile
+\usepackage{scrpage2}
+\pagestyle{scrheadings}
+\clearscrheadfoot
+\ofoot{\pagemark}
+
+\title{Installation von ROS unter Windows und Visualisierung des Manutec r2 Roboters}
+\author{1. Version: Brian Collins, Thomas Loran, Felix Langer}
+
+\date{Februar 2018}
+
+\begin{document}
+%%% Titelseite
+\maketitle
+\thispagestyle{empty}
+
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=1]{Bilder/Logo.png}
+\caption{Logo}
+\label{fig:Logo}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.35]{Bilder/ROS.png}
+\caption{ROS}
+\label{fig:ROS}
+\end{figure}
+
+\newpage
+%%% Inhaltsverzeichnis
+\tableofcontents
+\thispagestyle{empty}
+\newpage
+
+\setcounter{page}{1}
+\input{einleitung.tex}
+\input{windows.tex }
+\input{ros.tex}
+\input{roboter.tex}
+
+\newpage
+
+%%% Abbildungsverzeichnis
+\listoffigures
+\thispagestyle{empty}
+
+\end{document}

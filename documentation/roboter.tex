@@ -1,0 +1,45 @@
+\section{Visualisierung des Manutec r2 unter ROS}
+
+\subsection{Installieren der Nodes}
+Um das Projekt einzubinden müssen die folgenden Kommandos der Reihe nach ausgeführt werden. \\ \\
+Zu erst geht man in den richtigen Workspace, welcher der Catkin Workspace ist. 
+
+\begin{lstlisting}[language=bash]
+cd ~/catkin_ws/src/
+\end{lstlisting}
+Anschließend wird das Projekt aus Github kopiert und mit folgendem Befehl eingefügt (Tipp: Man kann den Link auch einfach aus der Dokumentation kopieren)
+\begin{lstlisting}[language=bash]
+git clone https://github.com/informatik-mannheim/virtual-robot-ros.git
+\end{lstlisting}
+Um das Projekt zu kompilieren muss man den unten ausgeführten Befehl ausführen. Dies muss man auch bei jeder Änderung machen um das Projekt zu aktualisieren.
+\begin{lstlisting}[language=bash]
+cd ~/catkin_ws/
+\end{lstlisting}
+
+\begin{lstlisting}[language=bash]
+catkin_make
+\end{lstlisting}
+
+\subsection{Starten der Nodes}
+Um das Meta-Betriebssystem ROS zu starten wird folgender Befehl benötigt
+\begin{lstlisting}[language=bash]
+roscore
+\end{lstlisting}
+Starten des TCP-Server Nodes:
+\begin{lstlisting}[language=bash]
+rosnode ...
+\end{lstlisting}
+Starten der Manutec r2 Simulation:
+\begin{lstlisting}[language=bash]
+roslaunch ...
+\end{lstlisting}
+
+
+
+\subsection{Simulation des Manutec r2 Roboters}
+Um das Projekt zu simulieren wird die Codesys Datei ausgeführt. Diese startet automatisch auch das ROS und die Launch-Datei, die die Bewegungen des Roboters simuliert. 
+
+\subsection{Beenden der Nodes}
+Zum beenden der Nodes, einfach mit \textit{STRG+C} den aktuellen Node schließen.
+
+
